@@ -30,6 +30,7 @@ class MealItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  
     return InkWell(
       onTap: () => gotoMealDetails(context),
       child: Card(
@@ -72,8 +73,45 @@ class MealItem extends StatelessWidget {
               ),
             ),
           ]),
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Row(
+                  children: [
+                    Icon(Icons.access_time_rounded),
+                    Container(width: 3.0),
+                    Text('$duration min'),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Icon(Icons.home_repair_service_rounded),
+                    Container(width: 3.0),
+                    Text('${_complexity(complexity)}'),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Icon(Icons.attach_money_rounded),
+                    Container(width: 3.0),
+                    Text('${_affordability(affordability)}'),
+                  ],
+                ),
+              ],
+            ),
+          )
         ]),
       ),
     );
+  }
+
+  String _complexity(Complexity cpx){
+    return cpx == Complexity.Simple ? 'Simple' : cpx == Complexity.Hard ? 'Hard' : 'Challenging';
+  }
+
+   String _affordability(Affordability aff){
+    return aff == Affordability.Affordable ? 'Affordable' : aff == Affordability.Pricey ? 'Expesive' : 'Luxirious';
   }
 }
