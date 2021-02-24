@@ -4,6 +4,9 @@ import 'package:meals_app/dummy_data.dart';
 import 'categoryItem.dart';
 
 class CategoryGrid extends StatelessWidget {
+  
+  CategoryGrid();
+
   @override
   Widget build(BuildContext context) {
     return GridView(

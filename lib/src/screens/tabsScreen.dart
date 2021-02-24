@@ -3,20 +3,32 @@ import 'package:meals_app/src/widgets/mainDrawer.dart';
 
 import 'categoryScreen.dart';
 import 'fovouriteScreen.dart';
+import '../models/meals_model.dart';
 
 class TabsScreen extends StatefulWidget {
+  final List<Meal> _fovouriteMeals;
+
+  TabsScreen(this._fovouriteMeals);
+
   @override
   _TabsScreenState createState() => _TabsScreenState();
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-  final List<Map<String, dynamic>> tabs = [
+  List<Map<String, dynamic>> tabs;
+
+  @override
+  void initState() {
+     tabs = [
     {
       'pages': CategoryScreen(),
       'title': 'Categories',
     },
-    {'pages': FavouriteScreen(), 'title': 'Your Favourite'}
+    {'pages': FavouriteScreen(widget._fovouriteMeals), 'title': 'Your Favourite'}
   ];
+    super.initState();
+  }
+  
   int _selectedIndex = 0;
 
   @override

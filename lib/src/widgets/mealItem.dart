@@ -19,8 +19,13 @@ class MealItem extends StatelessWidget {
     @required this.affordability,
   });
 
-  gotoMealDetails(BuildContext ctx){
-    Navigator.of(ctx).pushNamed(MealDetails.routeName,arguments: id);
+  gotoMealDetails(BuildContext ctx) {
+    Navigator.of(ctx).pushNamed(MealDetails.routeName, arguments: id)
+    .then(
+      (result) {
+        // if(result != null) remove(result);
+      },
+    );
   }
 
   @override
@@ -52,7 +57,7 @@ class MealItem extends StatelessWidget {
               child: Container(
                 color: Colors.black54,
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 6.0,vertical: 6.0),
+                  padding: EdgeInsets.symmetric(horizontal: 6.0, vertical: 6.0),
                   width: 300.0,
                   child: Text(
                     title,
